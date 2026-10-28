@@ -1,6 +1,7 @@
 public class TravelCard {
     private int number;
     private int balance;
+    private static final int MAX_BALANCE = 200;
 
     public TravelCard(int number, int balance) {
         this.number = number;
@@ -13,6 +14,14 @@ public class TravelCard {
 
     public int getBalance() {
         return balance;
+    }
+
+    public void topUp(int amount) {
+        balance += amount;
+    }
+
+    public void pay(int amount) {
+        balance -= amount;
     }
     @Override
     public String toString() {
