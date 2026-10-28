@@ -2,12 +2,18 @@ public class TravelCard {
     private int number;
     private int balance;
     private static final int MAX_BALANCE = 200;
+    private static int cardCount;
+    private static int cardNumber = 1001;
 
-    public TravelCard(int number, int balance) {
-        this.number = number;
-        this.balance = balance;
+    public TravelCard() {
+        this.number = cardNumber;
+        this.balance = 0;
+        cardCount = cardCount + 1;
+        cardNumber = cardNumber + 1;
     }
-
+    public static int getIssuedCount(){
+        return cardCount;
+    }
     public int getNumber() {
         return number;
     }
@@ -16,12 +22,26 @@ public class TravelCard {
         return balance;
     }
 
-    public void topUp(int amount) {
-        balance += amount;
+    public boolean topUp(int amount) {
+        if (balance + amount >= MAX_BALANCE){
+            return false;
+        }
+        else {
+            balance += amount;
+            return true;
+        }
     }
 
-    public void pay(int amount) {
-        balance -= amount;
+    public boolean pay(int amount) {
+
+        if (amount <= 0 || amount > balance){
+            return false;
+        }
+        else {
+            balance -= amount;
+            return true;
+        }
+
     }
     @Override
     public String toString() {
