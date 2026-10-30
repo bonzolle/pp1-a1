@@ -1,7 +1,5 @@
 
 public class Trip {
-    private int tripCount;
-    private String lastTrip;
     private int price;
     private Zone from;
     private Zone to;

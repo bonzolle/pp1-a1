@@ -40,6 +40,11 @@ public class TravelCard {
         return tripCount;
     }
 
+    public String getLastTrip(){
+
+        return lastTrip;
+    }
+
     public boolean topUp(int amount) {
         if (balance + amount >= MAX_BALANCE){
             return false;
