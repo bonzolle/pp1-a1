@@ -2,7 +2,7 @@ public class TravelCard {
     private int number;
     private int balance;
     private int tripCount;
-    private String lastTrip;
+    private Trip lastTrip;
     private static final int MAX_BALANCE = 200;
     private static int cardCount;
     private static int cardNumber = 1001;
@@ -11,18 +11,19 @@ public class TravelCard {
         this.number = cardNumber;
         this.balance = 0;
         this.tripCount = 0;
-        this.lastTrip = "ingen resa ännu";
+        this.lastTrip = null;
         cardCount = cardCount + 1;
         cardNumber = cardNumber + 1;
     }
 
     //resan
     public boolean travel(Trip trip){
-        if (!pay(trip.getPrice())) {
+
+        if (trip == null || !pay(trip.getPrice())) {
             return false;
         }
         tripCount += 1;
-        lastTrip = trip.getFrom() + " to " + trip.getTo() +" " + trip.getPrice() + " euros" ;
+        lastTrip = trip;
         return true;
     }
     public static int getIssuedCount(){
@@ -40,13 +41,13 @@ public class TravelCard {
         return tripCount;
     }
 
-    public String getLastTrip(){
+    public Trip getLastTrip(){
 
         return lastTrip;
     }
 
     public boolean topUp(int amount) {
-        if (balance + amount >= MAX_BALANCE){
+        if (balance + amount > MAX_BALANCE || amount <= 0){
             return false;
         }
         else {

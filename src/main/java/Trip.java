@@ -23,6 +23,6 @@ public class Trip {
     }
     @Override
     public String toString() {
-        return "Trip: " + getFrom() + " To-> " + getTo() + " (" + getPrice()+ ")";
+        return "Trip: " + getFrom() + " To-> " + getTo() + " " + getPrice() + " euros" ;
     }
 }
